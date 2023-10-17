@@ -1,0 +1,9 @@
+[user]
+	name = Jakub Antonín Štigler
+	email = xstigl00@stud.fit.vut.cz
+[color]
+	ui = yes
+[pull]
+	rebase = true
+[core]
+	editor = vim
