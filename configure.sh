@@ -131,4 +131,4 @@ else
         || err-exit
 fi
 
-echo "${YELLOW}Don't forget to run 'aswp config' to configure the audio swap$RESET"
+echo "${YELLOW}Don't forget to run 'aswp config' to configure it$RESET"
