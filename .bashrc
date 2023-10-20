@@ -1,3 +1,4 @@
+
 # define color codes
 ESC=$(printf "\e")
 
