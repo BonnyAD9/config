@@ -14,6 +14,8 @@ function err-exit() {
 }
 
 HOME_PATH=$1
+echo "$HOME_PATH"
+
 if [ ! -d "$HOME_PATH" ]; then
     echo "invalid argument"
     err-exit
@@ -21,7 +23,7 @@ fi
 
 # do this in new folder
 echo "${BLUE}mkdir config-tmp$RESET"
-mkdir config-tmp || err-exit
+mkdir config-tmp
 cd config-tmp
 
 # Make configuration files
@@ -31,37 +33,48 @@ mkdir "old"
 if [ -f $HOME_PATH/.bashrc ]; then
     cp $HOME_PATH/.bashrc old/.bashrc-old
 fi
-cat .bashrc >> $HOME_PATH/.bashrc
+cat ../.bashrc >> $HOME_PATH/.bashrc \
+    || err-exit
 
 if [ -f $HOME_PATH/.bashrc ]; then
     cp $HOME_PATH/.bashrc old/.bashrc-old
 fi
-cat .bashrc > $HOME_PATH/.bashrc
+cat ../.vimrc > $HOME_PATH/.vimrc \
+    || err-exit
 
 if [ -f $HOME_PATH/.gitconfig ]; then
     cp $HOME_PATH/.gitconfig
 fi
-cat .gitconfig > $HOME_PATH/.gitconfig
+cat ../.gitconfig > $HOME_PATH/.gitconfig \
+    || err-exit
 
 # install basic packages with pacman
 echo "${BLUE}install with pacman$RESET"
-pacman -Syu --needed git base-devel glibc libc++ vim llvm clang lldb ffmpeg \
+sudo pacman -Syu --needed git base-devel glibc libc++ vim llvm clang lldb ffmpeg \
         vlc vivaldi vivaldi-ffmpeg-codecs discord steam obs-studio texlive \
         texlive-langczechslovak dotnet-sdk \
     || err-exit
 
 # install yay
 echo "${BLUE}install yay$RESET"
-git clone https://aur.archlinux.org/yay-bin.git \
-    && cd yay-bin \
-    && makepkg -si \
-    && cd ..
-    || err-exit
+if type yay &> /dev/null; then
+    echo "yay already installed"
+else
+    git clone https://aur.archlinux.org/yay-bin.git \
+        && cd yay-bin \
+        && makepkg -si \
+        && cd .. \
+        || err-exit
+fi
 
 # install rust
 echo "${BLUE}install rust$RESET"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh \
-    || err-exit
+if type cargo &> /dev/null; then
+    echo "rust already installed"
+else
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh \
+        || err-exit
+fi
 
 # install with yay
 echo "${BLUE}install with yay$RESET"
@@ -72,11 +85,15 @@ yay -Syu \
 
 # install makemake templates
 echo "${BLUE}installing makemake templates$RESET"
-git clone https://github.com/BonnyAD9/makemake-templates.git \
-    && cd makemake-templates \
-    && ./install-all \
-    && cd .. \
-    || err-exit
+if [ -d makemake-templates ]; then
+    echo "makemake-templates folder exists"
+else
+    git clone https://github.com/BonnyAD9/makemake-templates.git \
+        && cd makemake-templates \
+        && ./install-all \
+        && cd .. \
+        || err-exit
+fi
 
 # install aswp
 echo "${BLUE}installing aswp$RESET"
@@ -109,7 +126,7 @@ if type meme-cutter &> /dev/null; then
     echo "${MAGENTA}meme-cutter already installed$RESET"
 else
     git clone https://github.com/BonnyAD9/meme-cutter.git \
-        && cd meme-cutter
+        && cd meme-cutter \
         && cargo build -r \
         && sudo cp target/release/meme-cutter /usr/bin/meme-cutter \
         && cd .. \
