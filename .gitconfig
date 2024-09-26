@@ -7,3 +7,5 @@
 	rebase = true
 [core]
 	editor = vim
+[init]
+	defaultBranch = master

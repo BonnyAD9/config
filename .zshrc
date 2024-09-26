@@ -1,6 +1,20 @@
-setopt extended_glob
+# OhMyZsh
+# COMPLETION_WAITING_DOTS="true"
+
+# DISABLE_AUTO_UPDATE=true
+
+# plugins=(
+#     git
+#     zsh-autosuggestions
+#     zsh-syntax-highlighting
+# )
+
+# Generic configuration
 
 PS1="%F{11}%n@%m %F{13}%~%F{8}%(!.#.\$)%f "
+export CC=clang
+export CXX=clang++
+export EDITOR=vim
 
 # aliases
 alias claer=clear
@@ -21,6 +35,10 @@ vsnew() {
 }
 
 update-all() {
+    if type dnf &> /dev/null; then
+        print -P "%F{191}sudo dnf update%f"
+        sudo dnf update
+    fi
     if type yay &> /dev/null; then
         print -P "%F{191}yay -Syu%f"
         # stupid npm sometimes breaks the update process
@@ -52,3 +70,6 @@ ncol() {
     done
     print -P -a -C 16 ${=R}
 }
+
+# syntax highlighting
+# source ~/prog/vsce/TypeDark/zsh-typedark.sh
