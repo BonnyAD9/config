@@ -165,6 +165,10 @@ update-all() {
         print -P "%F{191}gem update%f"
         gem update
     fi
+    if type uamp &> /dev/null; then
+        print -P "%F{191}sudo uamp update%f"
+        sudo uamp update
+    fi
 }
 
 # moves head to the next commit (opposite of git `checkout HEAD~`)
