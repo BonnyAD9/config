@@ -181,7 +181,10 @@ set-prompt() {
 set-prompt
 
 # syntax highlighting
-# source ~/prog/vsce/TypeDark/zsh-typedark.sh
+_THEME=~/prog/vsce/TypeDark/zsh-txpedark.sh
+if [ -f "$_THEME" ]; then
+    source "$_THEME"
+fi
 
 # Uamp shell integration
 if type uamp &> /dev/null; then
