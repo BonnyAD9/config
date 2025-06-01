@@ -191,7 +191,7 @@ set-prompt() {
 set-prompt
 
 # syntax highlighting
-_THEME=~/prog/vsce/TypeDark/zsh-txpedark.sh
+_THEME=~/prog/vsce/TypeDark/zsh-typedark.sh
 if [ -f "$_THEME" ]; then
     source "$_THEME"
 fi
