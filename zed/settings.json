@@ -1,0 +1,52 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "buffer_font_family": "Cascadia Code",
+  "buffer_line_height": "standard",
+  "vim_mode": true,
+  "show_whitespaces": "selection",
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "tabs": {
+    "close_position": "left"
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "format_on_save": "off",
+  "wrap_guides": [79],
+  "terminal": {
+    "line_height": "standard"
+  },
+  /*
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "TypeDark Yellow"
+  },
+  */
+  "use_system_path_prompts": false,
+  "inlay_hints": {
+    "toggle_on_modifiers_press": {
+      "alt": true,
+      "control": true
+    }
+  },
+  "relative_line_numbers": true,
+  "buffer_font_features": {
+    "calt": true
+  },
+  "minimap": {
+    // "show": "always"
+  }
+}

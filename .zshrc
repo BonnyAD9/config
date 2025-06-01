@@ -116,17 +116,23 @@ source $ZSH/oh-my-zsh.sh
 export CC=clang
 export CXX=clang++
 export EDITOR=nvim
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.3.0/bin"
+export CMAKE_BUILD_PARALLEL_LEVEL=`nproc`
 
 # aliases
 alias claer=clear
-alias v='xclip -o -selection clipboard'
-alias c='xclip -selection clipboard'
+alias v='clipr -v'
+alias c='clipr -c'
 alias vim=nvim
 
 # functions
 mkcd() {
     mkdir -p "$1"
     cd "$1"
+}
+
+clear() {
+    printf '\x1b[H\x1b[2J\x1b[3J'
 }
 
 update-all() {
@@ -152,8 +158,12 @@ update-all() {
         sudo npm update -g
     fi
     if type omz &> /dev/null; then
-        print -P "%f{191}omz update%f"
+        print -P "%F{191}omz update%f"
         omz update
+    fi
+    if type gem &> /dev/null; then
+        print -P "%F{191}gem update%f"
+        gem update
     fi
 }
 
