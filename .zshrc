@@ -74,8 +74,8 @@ DISABLE_AUTO_UPDATE=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-#    zsh-autosuggestions
-#    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 # PATH="$PATH:$HOME/.oh-my-zsh/custom/plugins/fzf-zsh-plugin/bin"
