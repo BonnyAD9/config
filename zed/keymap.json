@@ -16,7 +16,7 @@
   {
     "context": "Editor",
     "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "ctrl-shift-d": "editor::DuplicateSelection"
     }
   },
   {
@@ -46,7 +46,8 @@
       ],
       "-": ["workspace::SendKeystrokes", "j _"],
       "§": ["workspace::SendKeystrokes", "k _"],
-      "g |": ["workspace::SendKeystrokes", "8 0 |"]
+      "g |": ["workspace::SendKeystrokes", "8 0 |"],
+      "ctrl-shift-j": ["workspace::SendKeystrokes", "8 1 | F space r enter"]
     }
   },
   {
