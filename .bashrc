@@ -1,3 +1,16 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+. /usr/share/blesh/ble.sh --noattach
+
+alias ls='ls --color=auto'
+# PS1='[\u@\h \W]\$ '
+export CC=clang
+export CXX=clang++
 
 # define color codes
 ESC=$(printf "\e")
@@ -53,3 +66,5 @@ update-all() {
 git-next() {
     git checkout `git log --reverse --ancestry-path HEAD..master | head -n 1 | cut -d \  -f 2`
 }
+
+[[ ${BLE_VERSION-} ]] && ble-attach
