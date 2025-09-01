@@ -88,9 +88,28 @@
     }
   },
   {
+    "context": "Editor",
+    "bindings": {
+      "alt-a": ["workspace::SendKeystrokes", "escape A"],
+      "alt-i": ["workspace::SendKeystrokes", "escape I"],
+      "alt-e": ["workspace::SendKeystrokes", "escape e a"],
+      "alt-b": ["workspace::SendKeystrokes", "escape b i"],
+      "alt-shift-e": ["workspace::SendKeystrokes", "escape E a"],
+      "alt-shift-b": ["workspace::SendKeystrokes", "escape B i"],
+      "alt-w": ["workspace::SendKeystrokes", "escape w i"],
+      "alt-o": ["workspace::SendKeystrokes", "escape o"],
+      "alt-shift-o": ["workspace::SendKeystrokes", "escape O"],
+      "alt-p": ["workspace::SendKeystrokes", "escape p a"],
+      "alt-shift-p": ["workspace::SendKeystrokes", "escape P i"]
+    }
+  },
+  {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "ctrl-j": "editor::MoveToEndOfLine"
+      "alt-h": ["workspace::SendKeystrokes", "escape h a"],
+      "alt-j": ["workspace::SendKeystrokes", "escape j a"],
+      "alt-k": ["workspace::SendKeystrokes", "escape k a"],
+      "alt-l": ["workspace::SendKeystrokes", "escape l a"]
     }
   }
 ]

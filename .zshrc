@@ -166,8 +166,10 @@ update-all() {
         gem update
     fi
     if type uamp &> /dev/null; then
-        print -P "%F{191}sudo uamp update%f"
-        sudo uamp update
+        if [[ `uamp update --enabled` == "yes" ]]; then
+            print -P "%F{191}sudo uamp update%f"
+            sudo uamp update
+        fi
     fi
 }
 
