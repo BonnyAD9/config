@@ -53,6 +53,7 @@
   "buffer_font_features": {
     "calt": true
   },
+  "tab_size": 4,
   "minimap": {
     // "show": "always"
   },
