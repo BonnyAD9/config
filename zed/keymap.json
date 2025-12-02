@@ -10,7 +10,9 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
-      "ctrl-s": "terminal_panel::ToggleFocus"
+      "ctrl-;": "terminal_panel::ToggleFocus",
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-l": "workspace::ActivatePaneRight"
     }
   },
   {
@@ -22,8 +24,6 @@
   {
     "context": "vim_mode == normal",
     "bindings": {
-      "alt-h": "workspace::ActivatePaneLeft",
-      "alt-l": "workspace::ActivatePaneRight",
       "shift-alt-l l": "pane::SplitRight",
       "shift-alt-l k": "pane::SplitDown",
       "shift-alt-k h": [
@@ -50,7 +50,7 @@
     }
   },
   {
-      "context": "vim_mode == normal && !showing_completions",
+      "context": "!showing_completions",
       "bindings": {
           "alt-j": "workspace::ActivatePaneDown",
           "alt-k": "workspace::ActivatePaneUp"
@@ -81,15 +81,6 @@
     }
   },
   {
-    "context": "Editor && showing_completions",
-    "bindings": {
-      "tab": "menu::Confirm",
-      "enter": "editor::Newline",
-      "alt-j": "menu::SelectNext",
-      "alt-k": "menu::SelectPrevious"
-    }
-  },
-  {
     "context": "Editor && showing_code_actions",
     "bindings": {
       "tab": "editor::ConfirmCodeAction"
@@ -115,9 +106,23 @@
     "context": "Editor && vim_mode == insert",
     "bindings": {
       "alt-h": ["workspace::SendKeystrokes", "escape h a"],
-      "alt-j": ["workspace::SendKeystrokes", "escape j a"],
-      "alt-k": ["workspace::SendKeystrokes", "escape k a"],
       "alt-l": ["workspace::SendKeystrokes", "escape l a"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !showing_completions",
+    "bindings": {
+      "alt-j": ["workspace::SendKeystrokes", "escape j a"],
+      "alt-k": ["workspace::SendKeystrokes", "escape k a"]
+    }
+  },
+  {
+    "context": "(Editor || vim_mode == insert) && showing_completions",
+    "bindings": {
+      "tab": "menu::Confirm",
+      "enter": "editor::Newline",
+      "alt-j": "editor::ContextMenuNext",
+      "alt-k": "editor::ContextMenuPrevious"
     }
   }
 ]
